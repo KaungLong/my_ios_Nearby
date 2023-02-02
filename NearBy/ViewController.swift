@@ -95,9 +95,15 @@ class ViewController: UIViewController {
         request.region = mapView.region
         
         let search = MKLocalSearch(request: request)
-        search.start { response, error in
+        search.start { [weak self]response, error in
             
             guard let response = response, error == nil else { return }
+            
+            let places = response.mapItems.map(PlaceAnnotation.init)
+            places.forEach{ place in
+                self?.mapView.addAnnotation(place)
+            }
+            
             print(response.mapItems)
         }
         
