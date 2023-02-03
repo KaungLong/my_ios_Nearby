@@ -84,6 +84,21 @@ class ViewController: UIViewController {
                 print("Unknown error. Unable to get location.")
         }
     }
+    private func presentPlacesSheet(places: [PlaceAnnotation]) {
+        
+        guard let locationManager = locationManager,
+              let userLaction = locationManager.location
+        else { return }
+        
+        let placesTVC = PlacesTableViewController(userLocation: userLaction, places: places)
+        placesTVC.modalPresentationStyle = .pageSheet
+        
+        if let sheet = placesTVC.sheetPresentationController{
+            sheet.prefersGrabberVisible = true
+            sheet.detents = [.medium(),.large()]
+            present(placesTVC, animated: true)
+        }
+    }
     
     private func findNearbyPlaces(by query: String) {
         
@@ -103,7 +118,8 @@ class ViewController: UIViewController {
             places.forEach{ place in
                 self?.mapView.addAnnotation(place)
             }
-            
+
+            self?.presentPlacesSheet(places: places)
             print(response.mapItems)
         }
         
