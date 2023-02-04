@@ -12,7 +12,7 @@ class PlaceAnnotation: MKPointAnnotation {
     
     let mapItem : MKMapItem
     let id = UUID()
-    var isSelect : Bool = false
+    var isSelected : Bool = false
     
     init(mapItem:MKMapItem){
         self.mapItem = mapItem
