@@ -15,6 +15,8 @@
 		418FF1C5298BB3FB00FB8573 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418FF1C4298BB3FB00FB8573 /* PlaceAnnotation.swift */; };
 		418FF1CA298BB90100FB8573 /* CLLocation+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418FF1C9298BB90100FB8573 /* CLLocation+extension.swift */; };
 		418FF1CE298CBA1700FB8573 /* PlacesTabViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418FF1CD298CBA1700FB8573 /* PlacesTabViewContoller.swift */; };
+		418FF1D2298F7B0200FB8573 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418FF1D1298F7B0200FB8573 /* PlaceDetailViewController.swift */; };
+		418FF1D42991038D00FB8573 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418FF1D32991038D00FB8573 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		418FF1C4298BB3FB00FB8573 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		418FF1C9298BB90100FB8573 /* CLLocation+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+extension.swift"; sourceTree = "<group>"; };
 		418FF1CD298CBA1700FB8573 /* PlacesTabViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTabViewContoller.swift; sourceTree = "<group>"; };
+		418FF1D1298F7B0200FB8573 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
+		418FF1D32991038D00FB8573 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				418FF1C9298BB90100FB8573 /* CLLocation+extension.swift */,
+				418FF1D32991038D00FB8573 /* String+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -93,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				418FF1CD298CBA1700FB8573 /* PlacesTabViewContoller.swift */,
+				418FF1D1298F7B0200FB8573 /* PlaceDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -169,7 +175,9 @@
 			files = (
 				418FF1C5298BB3FB00FB8573 /* PlaceAnnotation.swift in Sources */,
 				418FF1CE298CBA1700FB8573 /* PlacesTabViewContoller.swift in Sources */,
+				418FF1D2298F7B0200FB8573 /* PlaceDetailViewController.swift in Sources */,
 				418FF1B5298B949000FB8573 /* ViewController.swift in Sources */,
+				418FF1D42991038D00FB8573 /* String+Extensions.swift in Sources */,
 				418FF1B1298B949000FB8573 /* AppDelegate.swift in Sources */,
 				418FF1CA298BB90100FB8573 /* CLLocation+extension.swift in Sources */,
 				418FF1B3298B949000FB8573 /* SceneDelegate.swift in Sources */,

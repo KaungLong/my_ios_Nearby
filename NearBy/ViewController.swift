@@ -11,11 +11,11 @@ import MapKit
 class ViewController: UIViewController {
 
     var locationManager: CLLocationManager?
-    private var places:[PlaceAnnotation] = []
-    
+    private var places: [PlaceAnnotation] = []
+
     lazy var mapView: MKMapView = {
         let map = MKMapView()
-        map.delegate = self
+        
         map.showsUserLocation = true
         map.translatesAutoresizingMaskIntoConstraints = false
         return map
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         // initialize location manager
         locationManager = CLLocationManager()
         locationManager?.delegate = self
-        
+        mapView.delegate = self
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.requestAlwaysAuthorization()
         locationManager?.requestLocation()
@@ -86,18 +86,19 @@ class ViewController: UIViewController {
                 print("Unknown error. Unable to get location.")
         }
     }
+    
     private func presentPlacesSheet(places: [PlaceAnnotation]) {
         
         guard let locationManager = locationManager,
-              let userLaction = locationManager.location
+        let userLocation = locationManager.location
         else { return }
         
-        let placesTVC = PlacesTableViewController(userLocation: userLaction, places: places)
+        let placesTVC = PlacesTableViewController(userLocation: userLocation, places: places)
         placesTVC.modalPresentationStyle = .pageSheet
         
-        if let sheet = placesTVC.sheetPresentationController{
+        if let sheet = placesTVC.sheetPresentationController {
             sheet.prefersGrabberVisible = true
-            sheet.detents = [.medium(),.large()]
+            sheet.detents = [.medium(), .large()]
             present(placesTVC, animated: true)
         }
     }
@@ -112,19 +113,19 @@ class ViewController: UIViewController {
         request.region = mapView.region
         
         let search = MKLocalSearch(request: request)
-        search.start { [weak self]response, error in
+        search.start { [weak self] response, error in
             
             guard let response = response, error == nil else { return }
             
             self?.places = response.mapItems.map(PlaceAnnotation.init)
-            self?.places.forEach{ place in
+            self?.places.forEach { place in
                 self?.mapView.addAnnotation(place)
             }
-            if let places = self?.places{
+            
+            if let places = self?.places {
                 self?.presentPlacesSheet(places: places)
             }
-            
-            print(response.mapItems)
+           
         }
         
     }
@@ -154,18 +155,32 @@ extension ViewController: MKMapViewDelegate {
             return place
         }
     }
-    
-    private func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
-        clearAllSelections()
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("GGG")
+                // clear all selections
+                clearAllSelections()
+                print("HHHH")
+        guard let selectionAnnotation = view.annotation as? PlaceAnnotation else { return }
+                let placeAnnotation = self.places.first(where: { $0.id == selectionAnnotation.id })
+                placeAnnotation?.isSelected = true
         
-        guard let placeAnnotation = annotation as? PlaceAnnotation else {return}
-        self.places.first(where: {$0.id == placeAnnotation.id})
-        
-        placeAnnotation.isSelected = true
-        presentPlacesSheet(places: self.places)
+                presentPlacesSheet(places: self.places)
     }
-}
+//    private func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+//
+//        // clear all selections
+//        clearAllSelections()
+//        print("HHHH")
+//        guard let selectionAnnotation = annotation as? PlaceAnnotation else { return }
+//        let placeAnnotation = self.places.first(where: { $0.id == selectionAnnotation.id })
+//        placeAnnotation?.isSelected = true
+//
+//        presentPlacesSheet(places: self.places)
+//
+//    }
     
+}
+
 
 extension ViewController: CLLocationManagerDelegate {
     
