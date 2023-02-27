@@ -18,6 +18,8 @@ class PlaceDetailViewController: UIViewController {
         label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
     }()
@@ -26,6 +28,8 @@ class PlaceDetailViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         label.alpha = 0.4
         return label
@@ -106,14 +110,25 @@ class PlaceDetailViewController: UIViewController {
         contactStackView.spacing = UIStackView.spacingUseSystem
         
         directionsButton.addTarget(self, action: #selector(directionsButtonTapped), for: .touchUpInside)
-//        callButton.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
-//
+        callButton.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
+
         contactStackView.addArrangedSubview(directionsButton)
         contactStackView.addArrangedSubview(callButton)
         
-        stackView.addArrangedSubview(contactStackView)
+//        stackView.addArrangedSubview(contactStackView)
         
         view.addSubview(stackView)
+        view.addSubview(contactStackView)
+        
+        stackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 10).isActive = true
+        stackView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor,constant: 5).isActive = true
+        stackView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor,constant: -5).isActive = true
+        stackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+
+        contactStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor,constant: 10).isActive = true
+        contactStackView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor,constant: 5).isActive = true
+        contactStackView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor,constant: -5).isActive = true
+        contactStackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
     }
     

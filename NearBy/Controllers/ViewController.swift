@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     var locationManager: CLLocationManager?
     private var places: [PlaceAnnotation] = []
@@ -132,7 +132,7 @@ class ViewController: UIViewController {
 }
 
 
-extension ViewController: UITextFieldDelegate {
+extension MainViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -147,7 +147,7 @@ extension ViewController: UITextFieldDelegate {
     }
 }
 
-extension ViewController: MKMapViewDelegate {
+extension MainViewController: MKMapViewDelegate {
     
     private func clearAllSelections() {
         self.places = self.places.map { place in
@@ -163,10 +163,10 @@ extension ViewController: MKMapViewDelegate {
         guard let selectionAnnotation = view.annotation as? PlaceAnnotation else { return }
                 let placeAnnotation = self.places.first(where: { $0.id == selectionAnnotation.id })
                 placeAnnotation?.isSelected = true
-        
+
                 presentPlacesSheet(places: self.places)
     }
-//    private func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+//    func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
 //
 //        // clear all selections
 //        clearAllSelections()
@@ -182,7 +182,7 @@ extension ViewController: MKMapViewDelegate {
 }
 
 
-extension ViewController: CLLocationManagerDelegate {
+extension MainViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         

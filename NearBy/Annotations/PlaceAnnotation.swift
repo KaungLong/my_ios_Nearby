@@ -8,9 +8,6 @@
 import Foundation
 import MapKit
 
-import Foundation
-import MapKit
-
 class PlaceAnnotation: MKPointAnnotation {
     
     let mapItem: MKMapItem

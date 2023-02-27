@@ -69,7 +69,6 @@
 				418FF1C6298BB40300FB8573 /* Annotations */,
 				418FF1B0298B949000FB8573 /* AppDelegate.swift */,
 				418FF1B2298B949000FB8573 /* SceneDelegate.swift */,
-				418FF1B4298B949000FB8573 /* ViewController.swift */,
 				418FF1B9298B949300FB8573 /* Assets.xcassets */,
 				418FF1BB298B949300FB8573 /* LaunchScreen.storyboard */,
 				418FF1BE298B949300FB8573 /* Info.plist */,
@@ -97,6 +96,7 @@
 		418FF1CC298CB9EE00FB8573 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				418FF1B4298B949000FB8573 /* ViewController.swift */,
 				418FF1CD298CBA1700FB8573 /* PlacesTabViewContoller.swift */,
 				418FF1D1298F7B0200FB8573 /* PlaceDetailViewController.swift */,
 			);
